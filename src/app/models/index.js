@@ -4,10 +4,9 @@ const fs = require("fs");
 const path = require("path");
 const Sequelize = require("sequelize");
 const basename = path.basename(__filename);
-
-const config = require("../../config/database");
 const db = {};
 
+//Produção
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: "postgres",
   protocol: "postgres",
@@ -15,6 +14,8 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
     ssl: true
   }
 });
+
+//Homologação
 // const sequelize = new Sequelize({
 //   dialect: "postgres",
 //   host: "127.0.0.1",
@@ -51,4 +52,9 @@ db.Sequelize = Sequelize;
 
 module.exports = db;
 
+//heroku login
+//heroku create apipostgresleo
+//git add .
+//git commit -m 'Primeiro commit'
+//git push heroku master
 //heroku addons:create heroku-postgresql --version 11
