@@ -9,13 +9,29 @@ const config = require("../../config/database");
 const db = {};
 
 
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
+// const sequelize = new Sequelize(process.env.DATABASE_URL, {
+//   dialect: "postgres",
+//   protocol: "postgres",
+//   dialectOptions: {
+//     ssl: true
+//   }
+// });
+const sequelize = new Sequelize( {
   dialect: "postgres",
-  protocol: "postgres",
-  dialectOptions: {
-    ssl: true
-  }
+  host: "127.0.0.1",
+  username: "postgres",
+  password: "postgres",
+  database: "go_barber",
+  operationAliases: false,
+  define: {
+    timestamp: true,
+    underscored: true,
+    underscoredAll: true
+
 });
+
+
+
 fs.readdirSync(__dirname)
   .filter(file => {
     return (

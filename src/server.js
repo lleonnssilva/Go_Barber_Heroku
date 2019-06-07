@@ -5,7 +5,7 @@ const lokiStore = require("connect-loki")(session);
 const flash = require("connect-flash");
 const path = require("path");
 const dateFilter = require("nunjucks-date-filter");
-
+var cors = require('cors');
 class App {
   constructor() {
     this.express = express();
@@ -41,6 +41,7 @@ class App {
 
     this.express.use(express.static(path.resolve(__dirname, "public")));
     this.express.set("view engine", "njk");
+    this.express.use(cors());
   }
 
   routes() {
