@@ -7,28 +7,28 @@ const basename = path.basename(__filename);
 const db = {};
 
 //Produção
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
-  dialect: "postgres",
-  protocol: "postgres",
-  dialectOptions: {
-    ssl: true
-  }
-});
-
-//Homologação
-// const sequelize = new Sequelize({
+// const sequelize = new Sequelize(process.env.DATABASE_URL, {
 //   dialect: "postgres",
-//   host: "127.0.0.1",
-//   username: "postgres",
-//   password: "postgres",
-//   database: "go_barber",
-//   operationAliases: false,
-//   define: {
-//     timestamp: true,
-//     underscored: true,
-//     underscoredAll: true
+//   protocol: "postgres",
+//   dialectOptions: {
+//     ssl: true
 //   }
 // });
+
+//Homologação
+const sequelize = new Sequelize({
+  dialect: "postgres",
+  host: "127.0.0.1",
+  username: "postgres",
+  password: "postgres",
+  database: "go_barber",
+  operationAliases: false,
+  define: {
+    timestamp: true,
+    underscored: true,
+    underscoredAll: true
+  }
+});
 
 fs.readdirSync(__dirname)
   .filter(file => {
