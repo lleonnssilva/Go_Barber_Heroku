@@ -5,7 +5,7 @@ const lokiStore = require("connect-loki")(session);
 const flash = require("connect-flash");
 const path = require("path");
 const dateFilter = require("nunjucks-date-filter");
-
+const model = require("../src/app/models");
 class App {
   constructor() {
     this.express = express();

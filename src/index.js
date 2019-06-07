@@ -1,3 +1,5 @@
+var models = require("./app/models");
 const server = require("./server");
-
-server.listen(process.env.PORT || 3000);
+models.sequelize.sync({ force: true }).then(function() {
+  server.listen(process.env.PORT || 3000);
+});
